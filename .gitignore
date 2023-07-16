@@ -24,3 +24,17 @@ hs_err_pid*
 replay_pid*
 
 target/
+.idea/
+.DS_Store
+*.iml
+**/*.class
+**/.classpath
+**/.factorypath
+**/.project
+**/.springBeans
+**/org.eclipse*
+**/org.springframework*
+**/*.log
+apps/**/bin/*
+libs/**/bin/*
+.owasp/
