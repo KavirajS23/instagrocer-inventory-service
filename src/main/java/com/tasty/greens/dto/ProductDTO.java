@@ -13,4 +13,6 @@ public class ProductDTO {
 	private String productName;
 	private String productType;
 	private BigDecimal productPrice;
+	private long productQuantity;
+	private String productUnit;
 }

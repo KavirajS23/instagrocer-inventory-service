@@ -16,6 +16,8 @@ public class MappingServiceImpl implements MappingService {
 				.productName(product.getName())
 				.productPrice(product.getPrice())
 				.productType(product.getType())
+				.productQuantity(product.getQuantity())
+				.productUnit(product.getUnit())
 				.build();
 	}
 
@@ -27,6 +29,8 @@ public class MappingServiceImpl implements MappingService {
 				.name(productDto.getProductName())
 				.price(productDto.getProductPrice())
 				.type(productDto.getProductType())
+				.quantity(productDto.getProductQuantity())
+				.unit(productDto.getProductUnit())
 				.build();
 	}
 
