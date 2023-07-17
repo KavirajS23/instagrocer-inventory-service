@@ -22,10 +22,11 @@ public class Product {
 
 	@Id
 	private long id;
-	private String name;
+	private String title;
+	private String description;
 	private String type;
 	@Field(targetType = FieldType.DECIMAL128)
 	private BigDecimal price;
 	private long quantity;
-	private String unit;
+	private String quantityDate;
 }

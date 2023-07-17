@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tasty.greens.dto.ProductDTO;
+import com.tasty.greens.dto.ProductResponse;
 import com.tasty.greens.service.ProductService;
 
 @RestController
@@ -46,17 +47,23 @@ public class ProductController {
 	
 	@DeleteMapping(path = "item/{itemId}")
 	public ResponseEntity<Object> deleteItem(@PathVariable(name = "itemId") Long id) {
-		Boolean isDeleted = productSvc.deleteItem(id);
-		String message = Boolean.TRUE.equals(isDeleted) ? "Deleted successfully" : "No item found for id: "+id;
-		HttpStatus status = Boolean.TRUE.equals(isDeleted) ? HttpStatus.OK : HttpStatus.NOT_FOUND;
-		return new ResponseEntity<>(message, status);
+		ProductResponse response = productSvc.deleteItem(id);
+		response = response != null ? response : ProductResponse.builder()
+				.itemId(id)
+				.response("No item found for id: "+id)
+				.build();
+		HttpStatus status = response != null ? HttpStatus.OK : HttpStatus.NOT_FOUND;
+		return new ResponseEntity<>(response, status);
 	}
 	
 	@PutMapping(path = "item")
 	public ResponseEntity<Object> updateItem(@RequestBody ProductDTO productDto) {
-		ProductDTO updatedProductDto = productSvc.updateItem(productDto);
-		Object response = updatedProductDto != null ? updatedProductDto : "No matching record found to update";
-		HttpStatus status = updatedProductDto != null ? HttpStatus.OK : HttpStatus.NOT_FOUND;
+		ProductResponse response = productSvc.updateItem(productDto);
+		response = response != null ? response : ProductResponse.builder()
+				.itemId(productDto.getItemId())
+				.response("No item found for id: "+productDto.getItemId())
+				.build();
+		HttpStatus status = response != null ? HttpStatus.OK : HttpStatus.NOT_FOUND;
 		return new ResponseEntity<>(response, status);
 	}
 	

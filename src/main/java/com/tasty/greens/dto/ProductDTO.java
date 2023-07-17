@@ -9,10 +9,11 @@ import lombok.Data;
 @Builder
 public class ProductDTO {
 
-	private long productId;
-	private String productName;
-	private String productType;
-	private BigDecimal productPrice;
-	private long productQuantity;
-	private String productUnit;
+	private long itemId;
+	private String title;
+	private String type;
+	private String description;
+	private BigDecimal price;
+	private long quantity;
+	private String quantityDate;
 }
