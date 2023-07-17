@@ -26,4 +26,6 @@ public class Product {
 	private String type;
 	@Field(targetType = FieldType.DECIMAL128)
 	private BigDecimal price;
+	private long quantity;
+	private String unit;
 }
