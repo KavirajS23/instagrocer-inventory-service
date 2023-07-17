@@ -12,12 +12,13 @@ public class MappingServiceImpl implements MappingService {
 	@Override
 	public ProductDTO convertEntityToDto(Product product) {
 		return ProductDTO.builder()
-				.productId(product.getId())
-				.productName(product.getName())
-				.productPrice(product.getPrice())
-				.productType(product.getType())
-				.productQuantity(product.getQuantity())
-				.productUnit(product.getUnit())
+				.itemId(product.getId())
+				.title(product.getTitle())
+				.description(product.getDescription())
+				.price(product.getPrice())
+				.type(product.getType())
+				.quantity(product.getQuantity())
+				.quantityDate(product.getQuantityDate())
 				.build();
 	}
 
@@ -25,12 +26,13 @@ public class MappingServiceImpl implements MappingService {
 	public Product convertDtoToEntity(ProductDTO productDto) {
 		
 		return Product.builder()
-				.id(productDto.getProductId() > 0 ? productDto.getProductId() : null)
-				.name(productDto.getProductName())
-				.price(productDto.getProductPrice())
-				.type(productDto.getProductType())
-				.quantity(productDto.getProductQuantity())
-				.unit(productDto.getProductUnit())
+				.id(productDto.getItemId() > 0 ? productDto.getItemId() : null)
+				.title(productDto.getTitle())
+				.description(productDto.getDescription())
+				.price(productDto.getPrice())
+				.type(productDto.getType())
+				.quantity(productDto.getQuantity())
+				.quantityDate(productDto.getQuantityDate())
 				.build();
 	}
 
