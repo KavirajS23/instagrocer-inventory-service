@@ -39,8 +39,8 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public ProductDTO saveItem(ProductDTO productDto) {
 		
+		productDto.setProductId(sequenceGeneratorService.generateSequence(Product.SEQUENCE_NAME));
 		Product product = mappingSvc.convertDtoToEntity(productDto);
-		product.setId(sequenceGeneratorService.generateSequence(Product.SEQUENCE_NAME));
 		Product newProduct = productRepository.save(product);
 		return mappingSvc.convertEntityToDto(newProduct);
 	}
